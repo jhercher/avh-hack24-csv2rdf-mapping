@@ -1,0 +1,29 @@
+# Mapping Example for a Cluster of Witnesses for a POEm
+BASE  <https://w3id.org/viraltexts/resource/> 
+PREFIX oa: <http://www.w3.org/ns/oa#> 
+PREFIX schema: <https://schema.org/> 
+PREFIX prov: <http://www.w3.org/ns/prov#> #seeAlso: http://events.linkeddata.org/ldow2009/papers/ldow2009_paper18.pdf
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# Reference (CSV header)
+# Title,Paragraphs,Place,Date,Open,URL,Coverage,Images,Witness_id,Cluster_id 
+
+# run with: `tarql --ntriples mapping.sparql nameOfcluster.csv
+
+CONSTRUCT { 
+   ?iri a oa:Annotation ;
+   oa:hasTarget ?URL ;
+   dc:title ?Title ;
+   dc:partOf ?Cluster_uri ;
+   prov:createdBy <https://viraltexts.org/> ;
+   oa:bodyValue ?Paragraphs ;
+   .
+
+}
+WHERE { 
+ # Bind URI of the Wittness (AnnotationObject)
+ BIND(iri(?Witness_id) as ?iri) 
+ # Bind URI of the Cluster (Collection of Annotations)
+ BIND (URI(CONCAT('https://w3id.org/viraltexts/resource/', ?Cluster_id)) AS ?Cluster_uri)  
+}
