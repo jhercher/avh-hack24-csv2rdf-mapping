@@ -37,7 +37,7 @@ Title,Paragraphs,Place,Date,Open,URL,Coverage,Images,Witness_id,Cluster_id
 
 
 ## Mapping
-Tarql is a good choice to map CSV to RDF. It is a command line tool and simply requires a SPAQL construct query to do what we want:
+[Tarql](https://tarql.github.io/) is a good choice to map CSV to RDF. It is a command line tool and simply requires a SPAQL construct query to do what we want:
 
 ```sparql
 # Mapping Example for a Cluster of Witnesses for a Poem in viraltexts.org 
